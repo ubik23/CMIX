@@ -5,7 +5,7 @@ var translation = {
     next: 'Prochain &gt;',
     last: 'Dernier &gt;|'
   },
-  startWithLast = true, 
+  startWithLast = false, 
   fileType = "png",
   suffix = "." + fileType,
   folder = 'assets/',
@@ -65,7 +65,7 @@ var translation = {
   function () {
     var urlpath = location.pathname,
     qty = pages.length - 1,
-    pageNum = pages.indexOf(urlpath.slice(1) + suffix),
+    pageNum = (startWithLast) ? pages.indexOf(urlpath.slice(1) + suffix) : 0,
     imageTag = document.querySelector('#comic'),
     setEvent = function (element, funcName) {
       for (var counter = element.length; counter > 0; ) counter--,
