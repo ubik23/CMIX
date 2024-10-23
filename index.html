@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Québec Cité</title>
+    <style>
+        * {box-sizing: border-box;}
+        @keyframes anim-bg-color {
+            to {background-color: #003780;}
+        }
+        html {
+            height: 100%;
+            width: 100%;
+        }
+        body {
+            width:100%;
+            text-align:center;
+            margin: 10px 0;
+            background: #fff;
+            animation: anim-bg-color 0.2s 0.3s ease-in-out forwards;
+        }
+        h1, h2 {
+            font-family: "Courier New", Courier, monospace;
+        }
+        h1 {
+            font-size: 48px;
+            margin: 0.33em 0;
+        }
+        h2 {
+            font-size: 18px;
+        }
+        .controls button {
+            padding: 10px 5px;
+            cursor: pointer;
+            transition: opacity 0.1s ease-in-out;
+        }
+        .controls.disable--last .next, .controls.disable--last .last {
+            opacity: 0.1;
+        }
+        .controls.disable--first .first, .controls.disable--first .prev {
+            opacity: 0.1;
+        }
+        .comic-container, .banner-container, .email-container {
+          display:block;
+          background-color:white;
+          box-sizing:border-box;
+          width:80%;
+          max-width:780px;
+          border-radius:12px;
+          moz-border-radius:12px;
+          margin: 0 auto 10px auto;
+          overflow: hidden;
+          transition: border-radius 0.2s ease-in-out, margin 0.2s ease-in-out, padding 0.2s ease-in-out, width 0.2s ease-in-out;
+        }
+        .comic-container {padding: 15px 0;}
+        .banner-container {padding: 15px 0 0 0;}
+        .email-container {padding: 15px;}
+        .comic-container img{
+            margin:0 auto;
+            width: 100%;
+            max-width: 470px;
+            height: auto;
+        }
+
+        @media(max-width: 587px ){
+            body {
+                margin: 0;
+            }
+          .comic-container, .banner-container, .email-container {
+            width: 100%;
+            min-width: auto;
+            padding: 0;
+            margin: 0;
+            border-radius:0;
+          }
+
+          .controls button{
+            display: block;
+            width: 95%;
+            margin: 0 auto;
+          }
+        }
+
+        .preload__container {
+            position: absolute;
+            right: 100%;
+            bottom: 0;
+            opacity: 0;
+        }
+        #quebec-cite-banner {
+            width: 100%;
+            max-width: 428px;
+            min-width: auto;
+            max-height: 250px;
+        }
+        @keyframes fade-in {
+            to {opacity: 1;}
+        }
+        @keyframes dash {
+            to {stroke-dashoffset: 0;}
+        }
+        @keyframes vertical-anim {
+            to {transform: translateY(0);}
+        }
+        @keyframes diagonal-anim {
+            to {transform: translate(0, 0);}
+        }
+        #silhouette-frontenac {
+            opacity: 0;
+            animation: fade-in 0.3s ease-in forwards;
+        }
+        #quebec {
+            stroke-dasharray: 1800;
+            stroke-dashoffset: 1800;
+            /*transition: stroke-dashoffset 5s ease-in-out;*/
+            animation: dash 2.5s 0.5s ease-in-out forwards;
+        }
+        #cite {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 970;
+            /*transition: stroke-dashoffset 5s ease-in-out;*/
+            animation: dash 1.5s 2.5s ease-in-out forwards;
+        }
+        #une-ville-en-deux-dimensions {
+            transform: translateY(75px);
+            animation: vertical-anim 0.5s 4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+        }
+        #vertical-stem {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: dash 1s 4.5s ease-in forwards;
+        }
+        #left-stem {
+            stroke-dasharray: 5;
+            stroke-dashoffset: 5;
+            animation: dash 0.5s 4.8s ease-in forwards;
+        }
+        #right-stem {
+            stroke-dasharray: 7;
+            stroke-dashoffset: 7;
+            animation: dash 0.5s 4.8s ease-in-out forwards;
+        }
+        #twitter {
+            transform: translate(240px, -15px);
+            animation: diagonal-anim 1s 5s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+        }
+        #github {
+            transform: translateY(40px);
+            animation: vertical-anim 0.3s 6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+        }
+    </style>
+  </head>
+  <body>
+      <div class="comic-container">
+            <img id="comic" src="assets/la-joke.png" alt=""></img>
+          <div class="controls disable--last" style="text-align:center;"><button class="first">|&lt; First</button><button class="prev">&lt; Previous</button><button class="random">Random</button><button class="next">Next &gt;</button><button class="last">Last  &gt;|</button></div>
+      </div>
+    <div class="preload__container">
+        <img class="preload__first" src="" alt=""></img>
+        <img class="preload__previous" src="" alt=""></img>
+        <img class="preload__random" src="" alt="" data-file=""></img>
+        <img class="preload__next" src="" alt=""></img>
+        <img class="preload__last" src="" alt=""></img>
+    </div>
+    <script defer src="js/main.js"></script>
+  </body>
+</html>
